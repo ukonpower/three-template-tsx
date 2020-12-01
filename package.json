@@ -16,6 +16,7 @@
     "@typescript-eslint/parser": "^4.3.0",
     "babel-loader": "^8.1.0",
     "browser-sync": "^2.26.12",
+    "css-loader": "^5.0.1",
     "del": "^6.0.0",
     "eslint": "^7.10.0",
     "eslint-config-mdcs": "^5.0.0",
@@ -29,11 +30,15 @@
     "gulp-if": "^3.0.0",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.1.0",
+    "postcss-loader": "^4.1.0",
     "raw-loader": "^4.0.1",
+    "sass-loader": "^10.1.0",
+    "sass-resources-loader": "^2.1.1",
+    "style-loader": "^2.0.0",
     "ts-loader": "^8.0.4",
     "typescript": "^4.0.3",
-    "webpack": "^4.44.2",
-    "webpack-stream": "^6.1.0"
+    "webpack": "^4.4.1",
+    "webpack-stream": "^5.2.1"
   },
   "dependencies": {
     "@types/react": "^17.0.0",

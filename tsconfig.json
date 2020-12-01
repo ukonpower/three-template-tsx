@@ -5,14 +5,13 @@
 	"module": "es2015",
 	"jsx": "react",
 	"moduleResolution": "node",
+	"allowSyntheticDefaultImports": true,
 	"lib": [
 		"es2020",
 		"dom"
 	],
-    "typeRoots": ["node_modules/@types"],
-    "rootDir": "./src/ts",
-	"outDir": "./public",
-	"allowSyntheticDefaultImports": true
+	"typeRoots": ["node_modules/@types"],
+    "rootDir": "./"
   },
-  "include": ["./src/"]
+  "include": ["./"]
 }

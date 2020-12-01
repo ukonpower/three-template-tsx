@@ -29,7 +29,7 @@ export class CameraController {
 
 		this.cursorPos = new THREE.Vector2();
 		this.cursorPosDelay = new THREE.Vector2();
-		this.cameraMoveWeight = new THREE.Vector2( 1.0, 1.0 );
+		this.cameraMoveWeight = new THREE.Vector2( 5.0, 1.0 );
 
 	}
 

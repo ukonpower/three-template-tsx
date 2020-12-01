@@ -1,13 +1,16 @@
 import * as ORE from 'ore-three-ts';
-
-import React, { useState, useEffect, useRef } from 'react';
 import * as ReactDOM from 'react-dom';
+import React from 'react';
+import { store } from './store';
+import { Provider } from 'react-redux';
 
-import { MainScene } from './World/MainScene';
-import { GlobalManager } from './World/MainScene/GlobalManager';
-import { AssetManager } from './World/MainScene/GlobalManager/AssetManager';
+import { Controls } from './Controls';
+import { Graphics } from './Graphics';
 
-import { World } from './World';
+import { GlobalManager } from './Graphics/MainScene/GlobalManager';
+import { AssetManager } from './Graphics/MainScene/GlobalManager/AssetManager';
+
+import './style/global.scss';
 
 declare global {
 	interface Window {
@@ -18,14 +21,23 @@ declare global {
 	}
 }
 
-window.addEventListener( 'load', () => {
+function checkUA() {
 
 	var ua = navigator.userAgent;
 	window.isSP = ( ua.indexOf( 'iPhone' ) > 0 || ua.indexOf( 'iPod' ) > 0 || ua.indexOf( 'Android' ) > 0 && ua.indexOf( 'Mobile' ) > 0 || ua.indexOf( 'iPad' ) > 0 || ua.indexOf( 'Android' ) > 0 || ua.indexOf( 'macintosh' ) > 0 );
 	window.isSP = window.isSP || navigator.platform == "iPad" || ( navigator.platform == "MacIntel" && navigator.userAgent.indexOf( "Safari" ) != - 1 && navigator.userAgent.indexOf( "Chrome" ) == - 1 && ( navigator as any ).standalone !== undefined );
 
+}
+
+window.addEventListener( 'load', () => {
+
+	checkUA();
+
 	ReactDOM.render(
-		<World></World>,
+		<Provider store={store}>
+			<Graphics/>
+			<Controls/>
+		</Provider>,
 		document.querySelector( '#app' ),
 	);
 

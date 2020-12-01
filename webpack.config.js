@@ -7,7 +7,8 @@ module.exports = {
 		filename: ''
 	},
 	module: {
-		rules: [{
+		rules: [
+			{
 				test: /\.tsx?$/,
 				exclude: /node_modules/,
 				use: 'ts-loader'
@@ -21,17 +22,40 @@ module.exports = {
 						loader: 'glslify-loader',
 						options: {
 							transform: [
-								['glslify-hex'],
-								['glslify-import']
+								[ 'glslify-hex' ],
+								[ 'glslify-import' ]
 							],
 							basedir: './src/glsl-chunks'
 						}
 					}
 				]
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true
+						}
+					},
+					'postcss-loader',
+					'sass-loader',
+					{
+						loader: 'sass-resources-loader',
+						options: {
+							resources: [
+								'./src/views/style/resources/vars.scss',
+								'./src/views/style/resources/mixins.scss',
+							]
+						},
+					},
+				],
 			}
 		]
 	},
 	resolve: {
-		extensions: [".ts", ".tsx", ".js", ".json"]
+		extensions: [ ".ts", ".tsx", ".js", ".json" ]
 	},
 };

@@ -2,16 +2,22 @@ import * as ORE from 'ore-three-ts';
 
 import React, { useState, useEffect, useRef } from 'react';
 import * as ReactDOM from 'react-dom';
+import { useSelector } from 'react-redux';
+import { State } from '../store';
 
 import { MainScene } from './MainScene';
 import { GlobalManager } from './MainScene/GlobalManager';
 import { AssetManager } from './MainScene/GlobalManager/AssetManager';
 
-export function World() {
+import styles from './style.scss';
 
-	const [ controller, setController ] = useState( null );
-	const [ mainScene, setMainScene ] = useState( null );
+export function Graphics() {
+
 	const canvasRef = useRef( null );
+	const [ controller, setController ] = useState<ORE.Controller>( null );
+	const [ mainScene, setMainScene ] = useState<MainScene>( null );
+
+	const effectType = useSelector( ( state: State ) => state.app.effectType );
 
 	useEffect( () => {
 
@@ -28,9 +34,15 @@ export function World() {
 
 	}, [] );
 
+	useEffect( () => {
+
+		mainScene && mainScene.gManager.stateWatcher.updateState( 'effectType', effectType );
+
+	}, [ effectType ] );
+
 	return (
-		<div className="canvas-wrapper">
-			<canvas ref={canvasRef}></canvas>
+		<div className={ styles.graphics }>
+			<canvas className={ styles.canvas } ref={ canvasRef }></canvas>
 		</div>
 	);
 

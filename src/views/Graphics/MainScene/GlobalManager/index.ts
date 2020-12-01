@@ -3,13 +3,14 @@ import * as ORE from 'ore-three-ts';
 
 import { AssetManager } from './AssetManager';
 import { EasyRaycaster } from './EasyRaycaster';
-import { Uniform } from 'three';
+import { StateWatcher } from './StateWatcher';
 
 export class GlobalManager {
 
 	public eRay: EasyRaycaster
 	public assetManager: AssetManager;
 	public animator: ORE.Animator;
+	public stateWatcher: StateWatcher;
 
 	constructor( param: { onPreAssetsLoaded?: Function, onMustAssetsLoaded?: Function, onSubAssetsLoaded?: Function } ) {
 
@@ -18,6 +19,7 @@ export class GlobalManager {
 		this.animator = new ORE.Animator();
 		this.assetManager = new AssetManager();
 		this.eRay = new EasyRaycaster();
+		this.stateWatcher = new StateWatcher();
 
 		this.assetManager.addEventListener( 'preAssetsLoaded', () => {
 

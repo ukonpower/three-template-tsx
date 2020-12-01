@@ -247,7 +247,7 @@ export class RenderPipeline {
 			fragmentShader: compo,
 			uniforms: ORE.UniformsLib.CopyUniforms( {
 				brightness: {
-					value: 0.08
+					value: 0.2
 				},
 			}, this.commonUniforms ),
 			defines: {

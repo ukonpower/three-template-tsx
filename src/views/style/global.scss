@@ -1,0 +1,14 @@
+:global{
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+	}
+
+	html, body {
+		background-color: #000;
+		width: 100%;
+		height: 100%;
+	}
+}
